@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.godot.godotandroidholoplugin">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application>
         <meta-data
             android:name="org.godotengine.plugin.v1.GodotAndroidHoloPlugin"

@@ -53,4 +53,25 @@ public class GodotAndroidHoloPlugin extends GodotPlugin {
     public boolean isNetworkTimeEnabled() {
         return TimeUtilities.isNetworkTimeEnabled(getActivity());
     }
+
+    @UsedByGodot
+    public void scheduleLocalNotification(String message, String title, String image, int interval, int tag) {
+        NotificationScheduler.scheduleNotification(message, title, image, interval, tag, getActivity().getApplicationContext());
+    }
+
+    @UsedByGodot
+    public void scheduleLocalRepeatingNotification(String message, String title, String image, int interval, int repeatInterval, int tag) {
+        NotificationScheduler.scheduleRepeatingNotification(message, title, image, interval, repeatInterval, tag, getActivity().getApplicationContext());
+    }
+
+    @UsedByGodot
+    public void cancelLocalNotification(int tag) {
+        NotificationScheduler.cancelScheduledNotification(tag, getActivity().getApplicationContext());
+    }
+
+    @UsedByGodot
+    public void cancelLocalRepeatingNotification(int tag) {
+        NotificationScheduler.cancelScheduledRepeatingNotification(tag, getActivity().getApplicationContext());
+    }
+
 }

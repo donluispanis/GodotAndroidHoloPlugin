@@ -4,8 +4,8 @@
 
     <application>
         <meta-data
-            android:name="org.godotengine.plugin.v1.InAppReview"
-            android:value="com.godot.inappreview.InAppReview" />
+            android:name="org.godotengine.plugin.v1.GodotAndroidHoloPlugin"
+            android:value="com.godot.godotandroidholoplugin.GodotAndroidHoloPlugin" />
 
     </application>
 

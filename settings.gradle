@@ -1,2 +1,2 @@
 include ':GodotAndroidHoloPlugin'
-rootProject.name = "GodotInAppReview"
+rootProject.name = "GodotAndroidHoloPlugin"

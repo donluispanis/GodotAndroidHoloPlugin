@@ -1,7 +1,13 @@
 package com.godot.godotandroidholoplugin;
 
+import static androidx.core.app.ActivityCompat.requestPermissions;
+
+import android.Manifest;
+import android.os.Build;
+
 import androidx.annotation.NonNull;
 import androidx.collection.ArraySet;
+import androidx.core.app.NotificationManagerCompat;
 
 import org.godotengine.godot.Godot;
 import org.godotengine.godot.plugin.GodotPlugin;
@@ -15,6 +21,8 @@ public class GodotAndroidHoloPlugin extends GodotPlugin {
 
     static final String REVIEW_SIGNAL = "on_review_flow_ended";
     static final String LOAD_ERROR_SIGNAL = "on_review_failed_to_load";
+
+    private static final int REQUEST_CODE_POST_NOTIFICATIONS = 101;
 
     public GodotAndroidHoloPlugin(Godot godot) {
         super(godot);
@@ -37,6 +45,15 @@ public class GodotAndroidHoloPlugin extends GodotPlugin {
 
     void emitGodotSignal(String signalName, Object... signalArgs) {
         emitSignal(signalName, signalArgs);
+    }
+
+    @UsedByGodot
+    public void tryRequestNotificationsPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (!NotificationManagerCompat.from(getActivity()).areNotificationsEnabled()) {
+                requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
     }
 
     @UsedByGodot

@@ -4,3 +4,4 @@ Godot Plugin targeted for Godot 3.6. It provides an all in one access to multipl
 
 Currently:
 - InAppReviews
+- LocalNotifications
